@@ -5,7 +5,7 @@ module X
         def editable object, method, options = {}
           data_url = polymorphic_path(object)
           object = object.last if object.kind_of?(Array)
-          if can? :edit, object and xeditable?
+          if xeditable?
             model = object.class.to_s.downcase
             model_param = model.gsub('::', '_')
             klass = options[:nested] ? object.class.const_get(options[:nested].to_s.singularize.capitalize) : object.class
